@@ -23,7 +23,7 @@ const Board = () => {
                 // console.log(value[a], value, value[c]);
 
                 if (value[a] === value[b] && value[a] === value[c]) {
-                    return true
+                    return value[a]
                 }
             }
         }
@@ -37,19 +37,41 @@ const Board = () => {
         setValue(copystate)
         setXturn(!isXturn)
     };
+
+    const resetButton = ()=>{
+        setValue(Array(9).fill(null));
+
+    };
     return (
 
         <div >
-            {isWinner ? (<h1 style={{
+            {isWinner ? (
+            <div><h1 style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: "white"
-            }} > Someone won </h1>)
+            }} > The winner is {isWinner}</h1> 
+            <button type="submit" onClick={resetButton} style={{
+                backgroundColor:"green",
+                padding:'10px',
+                fontSize:"18px",
+                fontWeight:"bold",
+                borderRadius:"10px",
+                display:"flex",
+                justifyContent:"center",
+                marginLeft:"50px",
+                cursor:"pointer",
+
+
+
+
+            }}>Play Again</button>
+            </div>)
                 : (
                     <div><h1 style={{
                         margin: "30px 200px"
-                    }}
+                    } }
                     >Tic Tac Toe</h1>
                         <div className="board-container">
                             <div className="board-row">
